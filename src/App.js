@@ -32,7 +32,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h2>Would you like some BurgerCoinTest 2a tokens?</h2>
+        <h2>Would you like some BurgerCoinTest 2a remove me tokens?</h2>
         <ul>
           <li>BurgerCoinTest contract is deployed at: {this.state.address}</li>
           <li>Decimcals: 18</li>
