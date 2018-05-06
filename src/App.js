@@ -10,7 +10,8 @@ class App extends Component {
     message: "",
     address: "",
     balance: "",
-    targetAdd: ""
+    targetAdd: "",
+    emailAddy: ""
   };
 
   async componentDidMount() {
@@ -20,6 +21,10 @@ class App extends Component {
       .call();
     this.setState({ address, balance });
   }
+
+  handleChange(event) {
+    this.setState({emailAddy: event.target.emailAddy});
+  };
 
   onSubmit = async event => {
     event.preventDefault();
@@ -45,6 +50,10 @@ class App extends Component {
           <div>
             <p>Amount of coins available: {this.state.balance} </p>
           </div>
+          <label>
+            Email Address:
+            <input type="text" emailAddy={this.state.emailAddy} onChange={this.handleChange} />
+          </label>
       
           <button>Get Tokens!</button>
           <hr />
