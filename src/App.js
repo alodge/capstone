@@ -28,16 +28,16 @@ class App extends Component {
   }
 
   updateState(e) {
-    console.log("in handleChange function");
-    console.log(e.target.value);
     this.setState({emailAddy: e.target.value});
-    console.log(this.state.emailAddy);
   };
 
   onSubmit = async event => {
+    event.preventDefault();
     console.log("in onSubmit function");
     console.log(this.state.emailAddy);
-    event.preventDefault();
+    var emailAddress = this.state.emailAddy;
+    var emailDomain = emailAddress.replace(/.*@/, "");
+    console.log(emailDomain);
     const myAddress = await web3.eth.getAccounts();
     this.setState({ message: "Waiting on transaction success.." });
     await bctest.methods.getCoins().send({ gas: "700000", from: myAddress[0] });
