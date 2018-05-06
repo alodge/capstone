@@ -23,7 +23,7 @@ class App extends Component {
   }
 
   handleChange(event) {
-    this.setState({emailAddy: event.target.emailAddy});
+    this.setState({emailAddy: event.target.value});
   };
 
   onSubmit = async event => {
@@ -52,7 +52,7 @@ class App extends Component {
           </div>
           <label>
             Email Address:
-            <input type="text" emailAddy={this.state.emailAddy} onChange={this.handleChange} />
+            <input type="text" value={this.state.value} onChange={this.handleChange} />
           </label>
       
           <button>Get Tokens!</button>
