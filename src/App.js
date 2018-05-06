@@ -30,7 +30,7 @@ class App extends Component {
   updateState(e) {
     console.log("in handleChange function");
     console.log(e.target.value);
-    this.setState({emailAddy: e.target.value});
+    await this.setState({emailAddy: e.target.value});
     console.log(this.state.emailAddy);
   };
 
