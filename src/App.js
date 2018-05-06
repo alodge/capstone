@@ -5,13 +5,18 @@ import web3 from "./web3";
 import bctest from "./bctest";
 
 class App extends Component {
-  state = {
-    amount: "",
-    message: "",
-    address: "",
-    balance: "",
-    targetAdd: "",
-    emailAddy: ""
+  constructor(props) {
+    super(props);
+    this.state = {
+      amount: "",
+      message: "",
+      address: "",
+      balance: "",
+      targetAdd: "",
+      emailAddy: ""
+    };
+    this.updateState = this.updateState.bind(this);
+      
   };
 
   async componentDidMount() {
@@ -22,7 +27,7 @@ class App extends Component {
     this.setState({ address, balance });
   }
 
-  handleChange(e) = async event => {
+  updateState(e) {
     console.log("in handleChange function");
     console.log(e.target.value);
     this.setState({emailAddy: e.target.value});
@@ -55,7 +60,7 @@ class App extends Component {
           </div>
           <label>
             Email Address:
-            <input type="text" value={this.state.emailAddy} onChange={this.handleChange} />
+            <input type="text" value={this.state.emailAddy} onChange={this.updateState} />
           </label>
           <hr />
           <button>Get Tokens!</button>
