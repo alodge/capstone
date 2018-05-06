@@ -35,6 +35,8 @@ class App extends Component {
   };
 
   onSubmit = async event => {
+    console.log("in onSubmit function");
+    console.log(this.state.emailAddy);
     event.preventDefault();
     const myAddress = await web3.eth.getAccounts();
     this.setState({ message: "Waiting on transaction success.." });
