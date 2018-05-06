@@ -39,7 +39,7 @@ class App extends Component {
     var emailDomain = emailAddress.replace(/.*@/, "");
     console.log(emailDomain);
     if (emailDomain == "oregonstate.edu") {
-      fetch('https://httpbin.org/post', {
+      fetch('https://my-project-1514223225812.appspot.com/account', {
         method: 'post',
         headers: {
           'Accept': 'application/json, text/plain, */*',
