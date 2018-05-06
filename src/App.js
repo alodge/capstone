@@ -22,10 +22,10 @@ class App extends Component {
     this.setState({ address, balance });
   }
 
-  handleChange(event) {
+  handleChange(e) = async event => {
     console.log("in handleChange function");
-    console.log(event.target.value);
-    this.setState({emailAddy: event.target.value});
+    console.log(e.target.value);
+    this.setState({emailAddy: e.target.value});
     console.log(this.state.emailAddy);
   };
 
