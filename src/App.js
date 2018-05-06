@@ -38,10 +38,15 @@ class App extends Component {
     var emailAddress = this.state.emailAddy;
     var emailDomain = emailAddress.replace(/.*@/, "");
     console.log(emailDomain);
-    const myAddress = await web3.eth.getAccounts();
-    this.setState({ message: "Waiting on transaction success.." });
-    await bctest.methods.getCoins().send({ gas: "700000", from: myAddress[0] });
-    this.setState({ message: "Success - Check your balance" });
+    if (emailDomain == "oregonstate.edu") {
+      const myAddress = await web3.eth.getAccounts();
+      this.setState({ message: "Waiting on transaction success.." });
+      await bctest.methods.getCoins().send({ gas: "700000", from: myAddress[0] });
+      this.setState({ message: "Success - Check your balance" });
+    }
+    else {
+      this.setState({ message: "I'm sorry, we are only giving tokens to *@oregonstate.edu addresses right now..." });
+    }
   };
 
   render() {
