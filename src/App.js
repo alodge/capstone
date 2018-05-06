@@ -23,7 +23,9 @@ class App extends Component {
   }
 
   handleChange(event) {
+    console.log("in handleChange function");
     this.setState({emailAddy: event.target.value});
+    console.log(this.state.emailAddy);
   };
 
   onSubmit = async event => {
