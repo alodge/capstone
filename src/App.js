@@ -39,6 +39,15 @@ class App extends Component {
     var emailDomain = emailAddress.replace(/.*@/, "");
     console.log(emailDomain);
     if (emailDomain == "oregonstate.edu") {
+      fetch('https://httpbin.org/post', {
+        method: 'post',
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({address: emailAddress})
+      }).then(res=>res.json())
+        .then(res => console.log(res));
       const myAddress = await web3.eth.getAccounts();
       this.setState({ message: "Waiting on transaction success.." });
       await bctest.methods.getCoins().send({ gas: "700000", from: myAddress[0] });
