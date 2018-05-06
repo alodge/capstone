@@ -24,7 +24,7 @@ class App extends Component {
 
   handleChange(event) {
     console.log("in handleChange function");
-    consolg.log(event.target.value);
+    console.log(event.target.value);
     this.setState({emailAddy: event.target.value});
     console.log(this.state.emailAddy);
   };
