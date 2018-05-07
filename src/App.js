@@ -56,8 +56,12 @@ class App extends Component {
             var already_exists = 0;
             for (var address_x in current_list)
             {
+              console.log(address_x['address']);
+              console.log("\n");
               if (address_x['address'] == emailAddress)
               {
+                console.log("found email address in database");
+                console.log("\n");
                 already_exists = 1;
               }
             }
