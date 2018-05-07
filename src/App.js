@@ -33,11 +33,11 @@ class App extends Component {
 
   onSubmit = async event => {
     event.preventDefault();
-    console.log("in onSubmit function");
-    console.log(this.state.emailAddy);
+    //console.log("in onSubmit function");
+    //console.log(this.state.emailAddy);
     var emailAddress = this.state.emailAddy;
     var emailDomain = emailAddress.replace(/.*@/, "");
-    console.log(emailDomain);
+    //console.log(emailDomain);
     var this1 = this;
     //  CHECK1 - Email address has an oregonstate.edu domain
     if (emailDomain == "oregonstate.edu") {
@@ -49,20 +49,20 @@ class App extends Component {
       checkcurrent.onload = async function () {
         if (checkcurrent.readyState === checkcurrent.DONE) {
           if (checkcurrent.status === 200) {
-            console.log(checkcurrent.response);
+            //console.log(checkcurrent.response);
             // console.log(xhr.responseText);
             var current_list = JSON.parse(checkcurrent.response);
-            console.log(current_list);
+            //console.log(current_list);
             var already_exists = 0;
             for (var address_x in current_list)
             {
               var current_object = current_list[address_x];
-              console.log(current_object);
-              console.log("\n");
+              //console.log(current_object);
+              //console.log("\n");
               if (current_object['address'] == emailAddress)
               {
-                console.log("found email address in database");
-                console.log("\n");
+                //console.log("found email address in database");
+                //console.log("\n");
                 already_exists = 1;
               }
             }
