@@ -40,7 +40,7 @@ class App extends Component {
     console.log(emailDomain);
     if (emailDomain == "oregonstate.edu") {
       fetch('https://my-project-1514223225812.appspot.com/account', {
-        method: 'post',
+        method: 'get',
         body: JSON.stringify({address: emailAddress})
         }).then(res => console.log(res));
       const myAddress = await web3.eth.getAccounts();
