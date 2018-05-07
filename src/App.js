@@ -56,7 +56,7 @@ class App extends Component {
             var already_exists = 0;
             for (var address_x in current_list)
             {
-              if (address_x['address'] = emailAddress)
+              if (address_x['address'] == emailAddress)
               {
                 already_exists = 1;
               }
