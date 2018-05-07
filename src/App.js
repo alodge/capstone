@@ -59,7 +59,7 @@ class App extends Component {
               var current_object = current_list[address_x];
               console.log(current_object);
               console.log("\n");
-              if (address_x['address'] == emailAddress)
+              if (current_object['address'] == emailAddress)
               {
                 console.log("found email address in database");
                 console.log("\n");
@@ -79,6 +79,10 @@ class App extends Component {
                 method: 'post',
                 body: JSON.stringify({address: emailAddress})
               }).then(res => console.log(res));
+            }
+            if (already_exists == 1)
+            {
+              this1.setState({ message: "I'm sorry, that address has already received BurgerCoin" });
             }
           }
         }
