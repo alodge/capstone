@@ -46,7 +46,7 @@ class App extends Component {
       checkcurrent.open('GET', 'https://my-project-1514223225812.appspot.com/account', true);
       // If specified, responseType must be empty string or "text"
       checkcurrent.responseType = 'text';
-      checkcurrent.onload = function () {
+      checkcurrent.onload = async function () {
         if (checkcurrent.readyState === checkcurrent.DONE) {
           if (checkcurrent.status === 200) {
             console.log(checkcurrent.response);
