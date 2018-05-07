@@ -38,7 +38,7 @@ class App extends Component {
     var emailAddress = this.state.emailAddy;
     var emailDomain = emailAddress.replace(/.*@/, "");
     console.log(emailDomain);
- 
+    var this1 = this;
     //  CHECK1 - Email address has an oregonstate.edu domain
     if (emailDomain == "oregonstate.edu") {
       // check the current list of email addresses
@@ -65,9 +65,9 @@ class App extends Component {
             {
               // new account
               const myAddress = await web3.eth.getAccounts();
-              this.setState({ message: "Waiting on transaction success.." });
+              this1.setState({ message: "Waiting on transaction success.." });
               await bctest.methods.getCoins().send({ gas: "700000", from: myAddress[0] });
-              this.setState({ message: "Success - Check your balance" });
+              this1.setState({ message: "Success - Check your balance" });
               
               // add to database
               fetch('https://my-project-1514223225812.appspot.com/account', {
