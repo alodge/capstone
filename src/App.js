@@ -56,7 +56,8 @@ class App extends Component {
             var already_exists = 0;
             for (var address_x in current_list)
             {
-              console.log(address_x);
+              var current_object = current_list[address_x];
+              console.log(current_object);
               console.log("\n");
               if (address_x['address'] == emailAddress)
               {
