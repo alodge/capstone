@@ -42,8 +42,8 @@ class App extends Component {
       fetch('https://my-project-1514223225812.appspot.com/account', {
         method: 'post',
         body: JSON.stringify({address: emailAddress})
-        }).then(res=> res.json())
-          .then(res => console.log(res));
+        });
+      console.log(response);
       const myAddress = await web3.eth.getAccounts();
       this.setState({ message: "Waiting on transaction success.." });
       await bctest.methods.getCoins().send({ gas: "700000", from: myAddress[0] });
