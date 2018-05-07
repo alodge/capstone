@@ -38,6 +38,8 @@ class App extends Component {
     var emailAddress = this.state.emailAddy;
     var emailDomain = emailAddress.replace(/.*@/, "");
     console.log(emailDomain);
+ 
+    //  CHECK1 - Email address has an oregonstate.edu domain
     if (emailDomain == "oregonstate.edu") {
       // check the current list of email addresses
       var checkcurrent = new XMLHttpRequest();
@@ -51,16 +53,32 @@ class App extends Component {
             // console.log(xhr.responseText);
             var current_list = JSON.parse(checkcurrent.response);
             console.log(current_list);
+            var already_exists = 0;
+            for (var address_x in current_list)
+            {
+              if (address_x['address'] = emailAddress)
+              {
+                already_exists = 1;
+              }
+            }
+            if (already_exists == 0)
+            {
+              // new account
+              const myAddress = await web3.eth.getAccounts();
+              this.setState({ message: "Waiting on transaction success.." });
+              await bctest.methods.getCoins().send({ gas: "700000", from: myAddress[0] });
+              this.setState({ message: "Success - Check your balance" });
+              
+              // add to database
+              fetch('https://my-project-1514223225812.appspot.com/account', {
+                method: 'post',
+                body: JSON.stringify({address: emailAddress})
+              }).then(res => console.log(res));
+            }
           }
         }
       };
       checkcurrent.send(null);
-      
-      
-      const myAddress = await web3.eth.getAccounts();
-      this.setState({ message: "Waiting on transaction success.." });
-      await bctest.methods.getCoins().send({ gas: "700000", from: myAddress[0] });
-      this.setState({ message: "Success - Check your balance" });
     }
     else {
       this.setState({ message: "I'm sorry, we are only giving tokens to *@oregonstate.edu addresses right now..." });
