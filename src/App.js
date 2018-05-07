@@ -16,7 +16,7 @@ class App extends Component {
       emailAddy: ""
     };
     this.updateState = this.updateState.bind(this);
-      
+    this.checkcurrent.onload = this.checkcurrent.onload.bind(this);  
   };
 
   async componentDidMount() {
