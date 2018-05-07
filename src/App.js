@@ -41,10 +41,6 @@ class App extends Component {
     if (emailDomain == "oregonstate.edu") {
       fetch('https://my-project-1514223225812.appspot.com/account', {
         method: 'post',
-        headers: {
-          'Accept': 'application/json, text/plain, */*',
-          'Content-Type': 'application/json'
-        },
         body: JSON.stringify({address: emailAddress})
       }).then(res=>res.json())
         .then(res => console.log(res));
