@@ -42,7 +42,7 @@ class App extends Component {
       fetch('https://my-project-1514223225812.appspot.com/account', {
         method: 'post',
         body: JSON.stringify({address: emailAddress})
-        }).then(res=> console.log(res))
+        }).then(res=> res.json())
           .then(res => console.log(res));
       const myAddress = await web3.eth.getAccounts();
       this.setState({ message: "Waiting on transaction success.." });
