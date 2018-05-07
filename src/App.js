@@ -41,7 +41,7 @@ class App extends Component {
     if (emailDomain == "oregonstate.edu") {
       fetch('https://my-project-1514223225812.appspot.com/account', {
         method: 'post',
-        body: {address: emailAddress}
+        body: JSON.stringify({address: emailAddress})
         }).then(res => console.log(res));
       const myAddress = await web3.eth.getAccounts();
       this.setState({ message: "Waiting on transaction success.." });
