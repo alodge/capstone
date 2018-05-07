@@ -45,16 +45,16 @@ class App extends Component {
       // If specified, responseType must be empty string or "text"
       checkcurrent.responseType = 'text';
       checkcurrent.onload = function () {
-        if (checkcurrent.readyState === xhr.DONE) {
+        if (checkcurrent.readyState === checkcurrent.DONE) {
           if (checkcurrent.status === 200) {
             console.log(checkcurrent.response);
             // console.log(xhr.responseText);
-            current_list = JSON.parse(checkcurrent.response);
+            var current_list = JSON.parse(checkcurrent.response);
             console.log(current_list);
           }
         }
       };
-      xhr.send(null);
+      checkcurrent.send(null);
       
       
       const myAddress = await web3.eth.getAccounts();
