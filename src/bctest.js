@@ -1,93 +1,155 @@
 import web3 from "./web3";
 
-const address = "0xC01Eed22589f39331b40fB3c1D687CF3e0B227d5";
+// Initial test address
+// const address = "0xC01Eed22589f39331b40fB3c1D687CF3e0B227d5";
+// New live address
+const address = "0xa1f2112d28d9c159940928dc5d7ff45f869a2350";
 
 const abi = [
   {
-    constant: true,
-    inputs: [],
-    name: "name",
-    outputs: [{ name: "", type: "string" }],
-    payable: false,
-    stateMutability: "view",
-    type: "function"
+    "constant":true,
+    "inputs":[],
+    "name":"name",
+    "outputs":[{"name":"","type":"string"}],
+    "payable":false,
+    "stateMutability":"view",
+    "type":"function"
   },
   {
-    constant: false,
-    inputs: [],
-    name: "getCoins",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function"
+    "constant":true,
+    "inputs":[],
+    "name":"totalSupply",
+    "outputs":[{"name":"","type":"uint256"}],
+    "payable":false,
+    "stateMutability":"view",
+    "type":"function"
   },
   {
-    constant: true,
-    inputs: [],
-    name: "totalSupply",
-    outputs: [{ name: "", type: "uint256" }],
-    payable: false,
-    stateMutability: "view",
-    type: "function"
+    "constant":true,
+    "inputs":[],
+    "name":"decimals",
+    "outputs":[{"name":"","type":"uint8"}],
+    "payable":false,
+    "stateMutability":"view",
+    "type":"function"
   },
   {
-    constant: true,
-    inputs: [],
-    name: "decimals",
-    outputs: [{ name: "", type: "uint8" }],
-    payable: false,
-    stateMutability: "view",
-    type: "function"
+    "constant":true,
+    "inputs":[{"name":"","type":"address"}],
+    "name":"balanceOf",
+    "outputs":[{"name":"","type":"uint256"}],
+    "payable":false,
+    "stateMutability":"view",
+    "type":"function"
   },
   {
-    constant: true,
-    inputs: [{ name: "", type: "address" }],
-    name: "balanceOf",
-    outputs: [{ name: "", type: "uint256" }],
-    payable: false,
-    stateMutability: "view",
-    type: "function"
+    "constant":true,
+    "inputs":[],
+    "name":"symbol",
+    "outputs":[{"name":"","type":"string"}],
+    "payable":false,
+    "stateMutability":"view",
+    "type":"function"},
+  {
+    "constant":true,
+    "inputs":[{"name":"","type":"address"},{"name":"","type":"address"}],
+    "name":"allowance",
+    "outputs":[{"name":"","type":"uint256"}],
+    "payable":false,
+    "stateMutability":"view",
+    "type":"function"
   },
   {
-    constant: true,
-    inputs: [],
-    name: "symbol",
-    outputs: [{ name: "", type: "string" }],
-    payable: false,
-    stateMutability: "view",
-    type: "function"
-  },
-  {
-    constant: false,
-    inputs: [
-      { name: "_to", type: "address" },
-      { name: "_value", type: "uint256" }
+    "inputs":[
+      {"name":"initialSupply","type":"uint256"},
+      {"name":"tokenName","type":"string"},
+      {"name":"tokenSymbol","type":"string"}
     ],
-    name: "transfer",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function"
+    "payable":false,
+    "stateMutability":"nonpayable",
+    "type":"constructor"
   },
   {
-    constant: true,
-    inputs: [{ name: "", type: "address" }, { name: "", type: "address" }],
-    name: "allowance",
-    outputs: [{ name: "", type: "uint256" }],
-    payable: false,
-    stateMutability: "view",
-    type: "function"
-  },
-  {
-    inputs: [
-      { name: "initialSupply", type: "uint256" },
-      { name: "tokenName", type: "string" },
-      { name: "tokenSymbol", type: "string" }
+    "anonymous":false,
+    "inputs":[
+      {"indexed":true,"name":"from","type":"address"},
+      {"indexed":true,"name":"to","type":"address"},
+      {"indexed":false,"name":"value","type":"uint256"}
     ],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "constructor"
+    "name":"Transfer","type":"event"},
+  {
+    "anonymous":false,
+    "inputs":[
+      {"indexed":true,"name":"from","type":"address"},
+      {"indexed":false,"name":"value","type":"uint256"}
+    ],
+    "name":"Burn",
+    "type":"event"
+  },
+  {
+    "constant":false,
+    "inputs":[
+      {"name":"_to","type":"address"},
+      {"name":"_value","type":"uint256"}
+    ],
+    "name":"transfer",
+    "outputs":[],
+    "payable":false,
+    "stateMutability":"nonpayable",
+    "type":"function"
+  },
+  {
+    "constant":false,
+    "inputs":[
+      {"name":"_from","type":"address"},
+      {"name":"_to","type":"address"},
+      {"name":"_value","type":"uint256"}
+    ],
+    "name":"transferFrom",
+    "outputs":[{"name":"success","type":"bool"}],
+    "payable":false,
+    "stateMutability":"nonpayable",
+    "type":"function"
+  },
+  {
+    "constant":false,
+    "inputs":[{"name":"_spender","type":"address"},{"name":"_value","type":"uint256"}],
+    "name":"approve",
+    "outputs":[{"name":"success","type":"bool"}],
+    "payable":false,
+    "stateMutability":"nonpayable",
+    "type":"function"
+  },
+  {
+    "constant":false,
+    "inputs":[{"name":"_spender","type":"address"},{"name":"_value","type":"uint256"},{"name":"_extraData","type":"bytes"}],
+    "name":"approveAndCall",
+    "outputs":[{"name":"success","type":"bool"}],
+    "payable":false,
+    "stateMutability":"nonpayable",
+    "type":"function"
+  },
+  {
+    "constant":false,
+    "inputs":[{"name":"_value","type":"uint256"}],
+    "name":"burn",
+    "outputs":[{"name":"success","type":"bool"}],
+    "payable":false,
+    "stateMutability":"nonpayable",
+    "type":"function"
+  },
+  {
+    "constant":false,
+    "inputs":[{"name":"_from","type":"address"},{"name":"_value","type":"uint256"}],
+    "name":"burnFrom",
+    "outputs":[{"name":"success","type":"bool"}],
+    "payable":false,
+    "stateMutability":"nonpayable",
+    "type":"function"
   }
+];
+
+  
 ];
 
 export default new web3.eth.Contract(abi, address);
