@@ -114,7 +114,7 @@ class App extends Component {
             Email Address:
             <input type="text" value={this.state.emailAddy} onChange={this.updateState} />
           </label>
-          <br>
+          <br />
           <button>Get Tokens!</button>
           <hr />
           <h1>{this.state.message}</h1>
