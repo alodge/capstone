@@ -101,7 +101,7 @@ class App extends Component {
         <ul>
           <li>BurgerCoinTest contract is deployed at: {this.state.address}</li>
           <li>Decimcals: 18</li>
-          <li>Symbol: BCT</li>
+          <li>Symbol: BUR</li>
         </ul>
 
         <hr />
