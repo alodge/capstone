@@ -21,7 +21,6 @@ class App extends Component {
     this.updateState = this.updateState.bind(this);
     this.updateTransferee = this.updateTransferee.bind(this);
     this.updateAmount = this.updateAmount.bind(this);
-    // this.checkcurrent = this.checkcurrent.bind(this);  
   };
 
   async componentDidMount() {
@@ -120,7 +119,7 @@ onTransfer = async event => {
     return (
       <div>
         <h1>Welcome to the BurgerCoin Test Page</h1>
-        <a href="http://burgercoin.herokuapp.com/?"><h2>The basics of the BurgerCoin</h2></a>
+        <h2><a href="http://burgercoin.herokuapp.com/?">The basics of the BurgerCoin</a></h2>
         <ul>
           <li>BurgerCoinTest contract is deployed at: {this.state.address}</li>
           <li>Decimcals: 18</li>
