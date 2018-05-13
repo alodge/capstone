@@ -36,7 +36,7 @@ class App extends Component {
       .balanceOf(bctest.options.myAddress2)
       .call();
     console.log(myBalance);
-  }
+  };
 
   updateState(e) {
     this.setState({emailAddy: e.target.value});
