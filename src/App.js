@@ -15,7 +15,8 @@ class App extends Component {
       targetAdd: "",
       emailAddy: "",
       transferee: "",
-      transferAmount: ""
+      transferAmount: "",
+      myBalance: ""
     };
     this.updateState = this.updateState.bind(this);
     this.updateTransferee = this.updateTransferee.bind(this);
@@ -35,6 +36,7 @@ class App extends Component {
     const myBalance = await bctest.methods
       .balanceOf(bctest.options.myAddress2)
       .call();
+    this.setState({ myBalance })
     console.log(myBalance);
   };
 
