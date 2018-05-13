@@ -13,9 +13,11 @@ class App extends Component {
       address: "",
       balance: "",
       targetAdd: "",
-      emailAddy: ""
+      emailAddy: "",
+      transferee: ""
     };
     this.updateState = this.updateState.bind(this);
+    this.updateTransferee = this.updateTransferee.bind(this);
     // this.checkcurrent = this.checkcurrent.bind(this);  
   };
 
@@ -29,6 +31,10 @@ class App extends Component {
 
   updateState(e) {
     this.setState({emailAddy: e.target.value});
+  };
+  
+  updateTransferee(r) {
+    this.setState({ transferee: r.target.value });
   };
 
   onSubmit = async event => {
@@ -97,6 +103,12 @@ class App extends Component {
 onTransfer = async event => {
   event.preventDefault();
   this.setState({ message: "Heard Click of the transfer button" });
+  console.log(this.state.transferee);
+  // new account
+  const myAddress = await web3.eth.getAccounts();
+  this1.setState({ message: "Waiting on transaction success.." });
+  await bctest.methods.transfer().send({ from: myAddress[0] });
+this1.setState({ message: "Success - Check your balance" });
 };
 
   render() {
@@ -130,7 +142,7 @@ onTransfer = async event => {
           </div>
           <label>
             Address of Recipient:
-            <input type="text" value={this.state.emailAddy} onChange={this.updateState} />
+            <input type="text" value={this.state.transferee} onChange={this.updateTransferee} />
           </label>
           <br />
           <button>Send Tokens!</button>
