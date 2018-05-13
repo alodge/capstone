@@ -102,7 +102,7 @@ class App extends Component {
 
 onTransfer = async event => {
   event.preventDefault();
-  var this1 - this;
+  var this1 = this;
   this.setState({ message: "Heard Click of the transfer button" });
   console.log(this.state.transferee);
   // new account
