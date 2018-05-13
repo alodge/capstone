@@ -115,9 +115,9 @@ onTransfer = async event => {
   // Transfer code
   const myAddress = await web3.eth.getAccounts();
   console.log(myAddress);
-  // this1.setState({ message: "Waiting on transaction success.." });
-  // await bctest.methods.transfer().send({ from: myAddress[0] });
-  // this1.setState({ message: "Success - Check your balance" });
+  this1.setState({ message: "Waiting on transfer to process.." });
+  await bctest.methods.transfer().send({ _to: this.state.transferee, _value: this.state.transferAmount });
+  this1.setState({ message: "Successful transfer - Check your balance" });
 };
 
   render() {
