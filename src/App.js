@@ -37,7 +37,7 @@ class App extends Component {
       .balanceOf(bctest.options.myAddress2)
       .call();
     // this.setState({ myBalance })
-    console.log(myBalance);
+    console.log(myBalance1);
   };
 
   updateState(e) {
@@ -124,7 +124,10 @@ onTransfer = async event => {
   console.log(this.state.transferAmount);
   // Transfer code
   const myAddress = await web3.eth.getAccounts();
-  console.log(myAddress);
+  var fromAddress = myAddress[0];
+  var myAllownace = await bctest.methods.allowance(fromAddress, this.state.transferee).send({ gas: "700000", from: myAddress[0] });
+  console.log("allowance");
+  console.log(myAllowance);
   this1.setState({ message: "Waiting on transfer to process.." });
   await bctest.methods.transfer(this.state.transferee, this.state.transferAmount).send({ gas: "700000", from: myAddress[0] });
   this1.setState({ message: "Successful transfer - Check your balance" });
