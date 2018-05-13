@@ -94,6 +94,11 @@ class App extends Component {
     }
   };
 
+onTransfer = async event => {
+  event.preventDefault();
+  this.setState({ message: "Heard Click of the transfer button" });
+};
+
   render() {
     return (
       <div>
@@ -117,8 +122,22 @@ class App extends Component {
           <br />
           <button>Get Tokens!</button>
           <hr />
-          <h1>{this.state.message}</h1>
         </form>
+      
+      <form onSubmit={this.onTransfer}>
+          <div>
+            <p>Amount of coins available: {this.state.balance} </p>
+          </div>
+          <label>
+            Address of Recipient:
+            <input type="text" value={this.state.emailAddy} onChange={this.updateState} />
+          </label>
+          <br />
+          <button>Send Tokens!</button>
+          <hr />
+        </form>
+      
+      <h1>{this.state.message}</h1>
       </div>
     );
   }
