@@ -33,7 +33,7 @@ class App extends Component {
     const myAddress2 = myAddress1[0];
     console.log(myAddress2);
     const myBalance = await bctest.methods
-      .balanceOf(bctest.options.myAddress2)
+      .allowance(bctest.options.myAddress2, bctest.options.address)
       .call();
     console.log(myBalance);
   };
