@@ -134,13 +134,15 @@ onTransfer = async event => {
     return (
       <div>
         <h1>Welcome to the BurgerCoin Test Page</h1>
-        <h2>The basic of the BurgeCoin</h2>
+        <h2>The basics of the BurgerCoin</h2>
         <ul>
           <li>BurgerCoinTest contract is deployed at: {this.state.address}</li>
           <li>Decimcals: 18</li>
           <li>Symbol: BUR</li>
         </ul>
-
+        <p>
+            Read <a href="http://burgercoin.herokuapp.com/?">here</a> for a description of the currency and the project
+        </p>
         <hr />
 
         <form onSubmit={this.onSubmit}>
