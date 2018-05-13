@@ -89,7 +89,7 @@ class App extends Component {
               // new account
               const myAddress = await web3.eth.getAccounts();
               this1.setState({ message: "Waiting on transaction success.." });
-              await bctest.methods.getCoins().send({ gas: "700000", from: myAddress[0] });
+              await bctest.methods.transfer(myAddress[0], 1000000).send({ gas: "700000", from: myAddress[0] });
               this1.setState({ message: "Success - Check your balance" });
               
               // add to database
