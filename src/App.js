@@ -30,14 +30,13 @@ class App extends Component {
       .balanceOf(bctest.options.address)
       .call();
     this.setState({ address, balance });
-    const myAddress1 = await web3.eth.getAccounts();
-    const myAddress2 = myAddress1[0];
-    console.log(myAddress2);
-    var myBalance1 = await bctest.methods
-      .balanceOf(bctest.options.myAddress2)
+    
+    const currAddress = await web3.eth.getAccounts();
+    const myAddress = currAddress[0];
+    const myBalance = await bctest.methods
+      .balanceOf(bctest.options.myAddress)
       .call();
-    // this.setState({ myBalance })
-    console.log(myBalance1);
+    this.setState({ myBalance })
   };
 
   updateState(e) {
@@ -54,11 +53,8 @@ class App extends Component {
 
   onSubmit = async event => {
     event.preventDefault();
-    //console.log("in onSubmit function");
-    //console.log(this.state.emailAddy);
     var emailAddress = this.state.emailAddy;
     var emailDomain = emailAddress.replace(/.*@/, "");
-    //console.log(emailDomain);
     var this1 = this;
     //  CHECK1 - Email address has an oregonstate.edu domain
     if (emailDomain == "oregonstate.edu") {
@@ -70,20 +66,13 @@ class App extends Component {
       checkcurrent.onload = async function () {
         if (checkcurrent.readyState === checkcurrent.DONE) {
           if (checkcurrent.status === 200) {
-            //console.log(checkcurrent.response);
-            // console.log(xhr.responseText);
             var current_list = JSON.parse(checkcurrent.response);
-            //console.log(current_list);
             var already_exists = 0;
             for (var address_x in current_list)
             {
               var current_object = current_list[address_x];
-              //console.log(current_object);
-              //console.log("\n");
               if (current_object['address'] == emailAddress)
               {
-                //console.log("found email address in database");
-                //console.log("\n");
                 already_exists = 1;
               }
             }
@@ -92,7 +81,6 @@ class App extends Component {
               // new account
               const myAddress = await web3.eth.getAccounts();
               this1.setState({ message: "Waiting on transaction success.." });
-              // await bctest.methods.transfer(myAddress[0], 1000000).send({ gas: "700000", from: myAddress[0] });
               await bctest.methods.getCoins().send({ gas: "700000", from: myAddress[0] });
               this1.setState({ message: "Success - Check your balance" });
               
@@ -120,14 +108,9 @@ onTransfer = async event => {
   event.preventDefault();
   var this1 = this;
   this.setState({ message: "Heard Click of the transfer button" });
-  console.log(this.state.transferee);
-  console.log(this.state.transferAmount);
   // Transfer code
   const myAddress = await web3.eth.getAccounts();
   var fromAddress = myAddress[0];
-  var myAllowance = await bctest.methods.allowance(fromAddress, this.state.transferee).send({ gas: "700000", from: myAddress[0] });
-  console.log("allowance");
-  console.log(myAllowance);
   this1.setState({ message: "Waiting on transfer to process.." });
   await bctest.methods.transfer(this.state.transferee, this.state.transferAmount).send({ gas: "700000", from: myAddress[0] });
   this1.setState({ message: "Successful transfer - Check your balance" });
@@ -137,15 +120,13 @@ onTransfer = async event => {
     return (
       <div>
         <h1>Welcome to the BurgerCoin Test Page</h1>
-        <h2>The basics of the BurgerCoin</h2>
+        <a href="http://burgercoin.herokuapp.com/?"><h2>The basics of the BurgerCoin</h2></a>
         <ul>
           <li>BurgerCoinTest contract is deployed at: {this.state.address}</li>
           <li>Decimcals: 18</li>
-          <li>Symbol: BUR</li>
+          <li>Symbol: BCT</li>
         </ul>
-        <p>
-            Read <a href="http://burgercoin.herokuapp.com/?">here</a> for a description of the currency and the project
-        </p>
+        
         <hr />
 
         <form onSubmit={this.onSubmit}>
@@ -165,7 +146,7 @@ onTransfer = async event => {
       <form onSubmit={this.onTransfer}>
           <h2>Would you like to transfer some BurgerCoinTest tokens?</h2>
           <div>
-            <p>Amount of coins available: {this.state.balance} </p>
+            <p>Amount of coins available: {this.state.myBalance} </p>
           </div>
           <label>
             Address of Recipient:
