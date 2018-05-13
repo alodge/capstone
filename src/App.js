@@ -30,9 +30,9 @@ class App extends Component {
       .call();
     this.setState({ address, balance });
     const myAddress1 = await web3.eth.getAccounts();
-    console.log(myAddress1);
+    console.log(myAddress1[0]);
     const myBalance = await bctest.methods
-      .balanceOf(bctest.options.myAddress1)
+      .balanceOf(bctest.options.myAddress1[0])
       .call();
     console.log(myBalance);
   }
