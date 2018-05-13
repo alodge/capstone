@@ -125,7 +125,7 @@ onTransfer = async event => {
   // Transfer code
   const myAddress = await web3.eth.getAccounts();
   var fromAddress = myAddress[0];
-  var myAllownace = await bctest.methods.allowance(fromAddress, this.state.transferee).send({ gas: "700000", from: myAddress[0] });
+  var myAllowance = await bctest.methods.allowance(fromAddress, this.state.transferee).send({ gas: "700000", from: myAddress[0] });
   console.log("allowance");
   console.log(myAllowance);
   this1.setState({ message: "Waiting on transfer to process.." });
