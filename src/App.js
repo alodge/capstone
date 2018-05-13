@@ -123,7 +123,8 @@ onTransfer = async event => {
   render() {
     return (
       <div>
-        <h2>Would you like some BurgerCoinTest tokens?</h2>
+        <h1>Welcome to the BurgerCoin Test Page</h1>
+        <h2>The basic of the BurgeCoin</h2>
         <ul>
           <li>BurgerCoinTest contract is deployed at: {this.state.address}</li>
           <li>Decimcals: 18</li>
@@ -133,8 +134,9 @@ onTransfer = async event => {
         <hr />
 
         <form onSubmit={this.onSubmit}>
+          <h2>Would you like some BurgerCoinTest tokens?</h2>
           <div>
-            <p>Amount of coins available: {this.state.balance} </p>
+            <p>Amount of coins available in the bank: {this.state.balance} </p>
           </div>
           <label>
             Email Address:
@@ -146,6 +148,7 @@ onTransfer = async event => {
         </form>
       
       <form onSubmit={this.onTransfer}>
+          <h2>Would you like to transfer some BurgerCoinTest tokens?</h2>
           <div>
             <p>Amount of coins available: {this.state.balance} </p>
           </div>
